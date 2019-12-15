@@ -1,17 +1,28 @@
-<?php 
-/* Main page with two forms: sign up and log in */
-require 'db.php';
-session_start();
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <title>Login Result</title>
+    <style type = "text/css">
+      body { font-family: sans-serif;
+             background-color: lightyellow; }
+      table { background-color: lightblue;
+      border-collapse: collapse;
+      border: 1px solid gray; }
+      td { padding: 5px; }
+      tr:nth-child(odd) {
+      background-color: white; }
+    </style>
+  </head>
+  <body>
 
-if($_SERVER['REQUEST_METHOD'] == 'POST')
-{
+    <?php
 
-    if($_POST['password'] == $_POST['passwordConf']){
+    $db_handle_name = mysqli_connect( "localhost", "webphp", "password", "finaldb");
 
-      if(isset($_POST['register']))
-      {
-          require 'register.php';
-      }
+    if($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
     }
-}
-?>
+    ?>
+  </body>
+</html>
