@@ -1,32 +1,17 @@
-<?php
-/* User login process, checks if user exists and password is correct */
+<?php 
+/* Main page with two forms: sign up and log in */
+require 'db.php';
+session_start();
 
-// Escape email to protect against SQL injections
-$user_name = $mysqli->escape_string($_POST['username']);
-$result = $mysqli->query("SELECT * FROM users WHERE user_name='$user_name'");
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+{
 
-if ( $result->num_rows == 0 ){ // User doesn't exist
-    $_SESSION['message'] = "Username or password is incorrect!";
-    header("location: error.php");
-}
-else { // User exists
-    $user = $result->fetch_assoc();
+    if($_POST['password'] == $_POST['passwordConf']){
 
-    if ( password_verify($_POST['password'], $user['password']) ) {
-        
-        $_SESSION['email'] = $user['email'];
-        $_SESSION['first_name'] = $user['first_name'];
-        $_SESSION['last_name'] = $user['last_name'];
-        $_SESSION['user_name'] = $user['user_name'];
-        $_SESSION['active'] = $user['active'];
-        // This is how we'll know the user is logged in
-        $_SESSION['logged_in'] = true;
-
-        header("location: profile.php");
-    }
-    else {
-        $_SESSION['message'] = "Username or password is incorrect!";
-        header("location: error.php");
+      if(isset($_POST['register']))
+      {
+          require 'register.php';
+      }
     }
 }
-
+?>
