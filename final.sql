@@ -12,7 +12,7 @@ CREATE TABLE auth
     firstName VARCHAR(60) NOT NULL,
     lastName VARCHAR(60) NOT NULL,
     email VARCHAR(60) NOT NULL,
-    phone VARCHAR(60) NOT NULL,
+    phone VARCHAR(60) NOT NULL
 );
 
 INSERT INTO auth (username,password,firstName,lastName,email,phone) VALUES ('thadhouse','1234','thad','house', 'test@csun.edu', '5550123');
